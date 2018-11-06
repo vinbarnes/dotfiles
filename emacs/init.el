@@ -268,23 +268,6 @@ Then switch to the process buffer."
 (require 'tramp)
 
 ;; convenience functions
-;; (defun region-to-pbcopy ()
-;;      (interactive)
-;;      (setq text (buffer-substring-no-properties (region-beginning) (region-end)))
-;;      (shell-command (format "echo -n '%s' |pbcopy" text))
-;; )
-;; (global-set-key (kbd "<f2>") 'region-to-pbcopy)
-
-(fset 'vin-killring-to-pbcopy
-      "\C-x\C-f/tmp/ebuffer\C-m\C-xh\C-y\C-x\C-s\C-xk\C-m\C-[!cat /tmp/ebuffer | pbcopy\C-m")
-(defun vin-killring-to-pbcopy ()
-  (interactive)
-  (with-temp-file "/tmp/ebuffer"
-    (insert (car kill-ring))
-    (newline))
-  (shell-command "cat /tmp/ebuffer |pbcopy")
-)
-(global-set-key (kbd "<f2>") 'vin-killring-to-pbcopy)
 
 (defun region-to-browser ()
      (interactive)
