@@ -21,6 +21,7 @@
 ;; standard shit
 (setq-default indent-tabs-mode nil)
 (column-number-mode t)
+(setq insert-directory-program "gls")
 
 ;; some stuff for rails devs
 ;; https://github.com/pjammer/emacs_for_rails_devs
