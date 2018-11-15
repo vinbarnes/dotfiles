@@ -14,6 +14,8 @@ set -o physical
 #
 # export PATH=/usr/local/bin:$PATH
 
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 export GIT_EDITOR=emacsclient
@@ -34,6 +36,7 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 alias empy="DB_PORT=5434 DB_USER=barnesk python "
 
+alias ls="gls"
 alias ll="ls -Alh"
 alias l="ll"
 
@@ -110,11 +113,15 @@ alias rs="rails s"
 alias rc="rails c"
 alias be="bundle exec"
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/usr/local/var/google-cloud-sdk/path.bash.inc'
 
-# The next line enables shell command completion for gcloud.
-source '/usr/local/var/google-cloud-sdk/completion.bash.inc'
+if [ -d "/usr/local/var/google-cloud-sdk" ]
+then
+    # The next line updates PATH for the Google Cloud SDK.
+    source '/usr/local/var/google-cloud-sdk/path.bash.inc'
+
+    # The next line enables shell command completion for gcloud.
+    source '/usr/local/var/google-cloud-sdk/completion.bash.inc'
+fi
 
 # Vault setup for deploys
 export VAULT_ADDR='https://vault.crimsonconnect.com'
@@ -130,13 +137,13 @@ alias beigesway='mplayer -loop 0 -softvol -softvol-max 200 -volume 30 ~/Document
 export PATH="$HOME/bin:/Users/barnesk/Code/zeumo/deploy/bin:$PATH"
 export CDPATH=".:~:~/Links"
 
-source /usr/local/opt/autoenv/activate.sh
+[ -d /usr/local/opt/autoenv ] && source /usr/local/opt/autoenv/activate.sh
 
 # stop fucking with my prompt
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # keychain config
-eval `keychain --eval --quiet --agents ssh advisory_bitbucket_id_rsa`
+which keychain > /dev/null && [ -f ~/.ssh/advisory_bitbucket_id_rsa ] && eval `keychain --eval --quiet --agents ssh advisory_bitbucket_id_rsa`
 
 # keep it simple stupid
 PS1='\u@\h:\W $ '
