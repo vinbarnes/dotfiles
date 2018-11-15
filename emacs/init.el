@@ -4,8 +4,15 @@
 
 (require 'cl)
 
+;; package management
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+(unless package-archive-contents (package-refresh-contents))
+
 (add-to-list 'load-path "~/.emacs.d/config")
 (load "my_func.el")
+(load "init_packages.el")
 
 ;; hide toolbar
 (if (fboundp tool-bar-mode) (tool-bar-mode -1))
@@ -109,12 +116,6 @@ Then switch to the process buffer."
   "Invoke 'magit-log' using current/HEAD against upstream."
   (interactive)
   (magit-log '("..origin/master")))
-
-;; package management
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
-(unless package-archive-contents (package-refresh-contents))
 
 (autoload 'ansi-color "ansi-color" "trying to get colored logs for Rails" t)
 
