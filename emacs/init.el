@@ -154,10 +154,6 @@ Then switch to the process buffer."
  ;; If there is more than one, they won't work right.
  '(autotest-command "autotest")
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
- '(custom-safe-themes
-   (quote
-    ("e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "eacfc96fbe418c017f4a00fdde5d5029db8e2800a46251eb2174484fa431917e" "1278386c1d30fc24b4248ba69bc5b49d92981c3476de700a074697d777cb0752" "d7f1c86b425e148be505c689fc157d96323682c947b29ef00cf57b4e4e46e6c7" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" default)))
  '(dabbrev-abbrev-skip-leading-regexp ":")
  '(enable-recursive-minibuffers t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
@@ -195,6 +191,9 @@ Then switch to the process buffer."
  '(magit-diff-use-overlays nil)
  '(magit-fetch-arguments (quote ("--prune")))
  '(magit-use-overlays nil)
+ '(package-selected-packages
+   (quote
+    (window-purpose znc use-package projectile-rails pomodoro helm-projectile)))
  '(proced-filter (quote ##))
  '(purpose-use-default-configuration nil)
  '(rspec-use-rake-when-possible nil)
