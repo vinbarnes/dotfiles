@@ -1,6 +1,8 @@
 ;; some of this is cribbed from Yegge
 ;; https://sites.google.com/site/steveyegge2/effective-emacs
-(server-start)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 (require 'cl)
 
@@ -14,9 +16,8 @@
 (load "my_func.el")
 (load "init_packages.el")
 
-;; hide toolbar
-(if (fboundp tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp menu-bar-mode) (menu-bar-mode -1))
+;; window purpose
+;; (purpose-mode) ;; causing all sorts of weird issues with find file and Help buffer
 
 ;; standard shit
 (setq-default indent-tabs-mode nil)
@@ -77,9 +78,10 @@ Then switch to the process buffer."
 (global-set-key (kbd "C-x C-c") 'kb-quit-emacs)
 
 ;; replace Alt-X
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
-(global-set-key (kbd "C-c C-m") 'execute-extended-command)
 (global-unset-key (kbd "M-x"))
+(global-set-key (kbd "C-x C-m") 'helm-M-x)
+(global-set-key (kbd "C-c C-m") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; backward kill character and remap help
 (global-set-key (kbd "C-h") 'backward-delete-char)
@@ -231,6 +233,7 @@ Then switch to the process buffer."
  ;; If there is more than one, they won't work right.
  )
 
+(add-to-list 'default-frame-alist '(font . "Menlo 14"))
 (global-hl-line-mode 1)
 
 (require 'helm)
@@ -314,10 +317,6 @@ Then switch to the process buffer."
   (message (format-time-string "%H:%M - %a %b %d" (current-time))))
 (global-set-key (kbd "C-c d") 'message-current-date)
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
 (load "multiple_cursors.el")
 (put 'narrow-to-region 'disabled nil)
 
@@ -326,5 +325,11 @@ Then switch to the process buffer."
   (async-shell-command "osascript -e 'tell application \"iTunes\" to set shuffle enabled to true' && osascript -e 'tell application \"iTunes\" to play playlist \"CodiFi\"'")
 )
 
-;; window purpose
-(purpose-mode)
+(when (display-graphic-p)
+  (message "%s" (scroll-bar-mode))
+  ;; hide all windowing adornments
+  (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+  (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+  ;; make it yuge
+  (toggle-frame-maximized))
