@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.vinbarnes.ejector</string>
+  <key>Program</key>
+  <string>/Users/barnesk/Code/vinbarnes/dotfiles/bin/ejector.sh</string>
+  <key>StartInterval</key>
+  <integer>300</integer>
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.vinbarnes.ejector.err</string>
+  <key>StandardOutPath</key>
+  <string>/tmp/com.vinbarnes.ejector.out</string>
+</dict>
+</plist>
