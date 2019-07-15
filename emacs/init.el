@@ -103,6 +103,12 @@ Then switch to the process buffer."
 (global-set-key (kbd "C-x t") 'beginning-of-buffer)
 (global-set-key (kbd "C-x e") 'end-of-buffer)
 
+;; move current line in buffer to top of window
+(global-set-key (kbd "C-S-l")
+                (lambda ()
+                  "Move current line in buffer to top of window."
+                  (interactive) (recenter-top-bottom 0)))
+
 ;; previous window
 (global-unset-key (kbd "C-x p"))
 (global-set-key (kbd "C-x p") 'prev-window)
