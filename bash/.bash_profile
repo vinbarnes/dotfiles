@@ -5,7 +5,7 @@ shopt -s histappend
 HISTFILESIZE=10000
 HISTSIZE=10000
 HISTTIMEFORMAT="%F %T "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$n}history -a; history -c; history -r;"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r;"
 
 set -o physical
 
