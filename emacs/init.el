@@ -16,6 +16,8 @@
 (load "my_func.el")
 (load "init_packages.el")
 
+(setq mac-command-modifier 'super)
+
 ;; window purpose
 ;; (purpose-mode) ;; causing all sorts of weird issues with find file and Help buffer
 
@@ -76,6 +78,9 @@ Then switch to the process buffer."
 ;; warn before quitting
 (global-unset-key (kbd "C-x C-c"))
 (global-set-key (kbd "C-x C-c") 'kb-quit-emacs)
+
+;; don't suspend
+(global-unset-key (kbd "C-z")) ;; I'm use to this being used for autocomplete
 
 ;; replace Alt-X
 (global-unset-key (kbd "M-x"))
@@ -201,7 +206,7 @@ Then switch to the process buffer."
  '(magit-use-overlays nil)
  '(package-selected-packages
    (quote
-    (window-purpose znc use-package projectile-rails pomodoro helm-projectile)))
+    (markdown-mode markdown-mode+ markdown-preview-eww enh-ruby-mode ag window-purpose znc use-package projectile-rails pomodoro helm-projectile)))
  '(proced-filter (quote ##))
  '(purpose-use-default-configuration nil)
  '(rspec-use-rake-when-possible nil)
@@ -249,6 +254,7 @@ Then switch to the process buffer."
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; helm imenu
 (global-set-key (kbd "M-i") 'helm-imenu)
